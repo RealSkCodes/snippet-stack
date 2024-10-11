@@ -1,10 +1,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap");
-
 * {
   margin: 0;
   padding: 0;
   font-family: "Trebuchet MS", Arial, sans-serif;
   font-size: 1rem;
+}
+::-webkit-scrollbar {
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: red;
+  border-radius: 10px;
+  border: 4px solid transparent; /* Adds space around the handle */
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b30000;
 }
 body {
   background-color: #15202b;
@@ -48,4 +63,23 @@ header {
   border-radius: 8px;
   background-color: #880d17;
   cursor: pointer;
+}
+#header-bottom-container-navbar {
+  display: flex;
+  justify-content: flex-start;
+  overflow: auto hidden;
+  white-space: nowrap;
+  width: 30vw;
+  margin: auto;
+}
+#header-bottom-container-navbar span {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}
+#header-bottom-container-navbar span:hover {
+  background-color: #887f80;
+  border-radius: 8px;
 }
