@@ -5,3 +5,13 @@
 body {
   background-color: #15202b;
 }
+header {
+}
+#header-top-container {
+  display: flex;
+}
+#header-logo {
+  height: 35px;
+  width: 35px;
+  margin: 0.8rem;
+}
