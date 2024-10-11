@@ -12,6 +12,7 @@ header {
 #header-top-container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 #header-logo {
   height: 35px;
@@ -19,7 +20,6 @@ header {
   margin: 0.8rem;
 }
 #search-input {
-  max-height: 30px;
   min-width: 20vw;
   margin: 0.8rem;
   padding: 5px;
@@ -28,4 +28,14 @@ header {
   background-color: #2e3a46;
   color: #cfd4d6;
   outline: none;
+  margin-left: auto;
+  margin-right: 0;
+}
+#search-button {
+  min-width: 3vw;
+  margin: 0.8rem;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 8px;
+  background-color: #26405a;
 }
