@@ -19,11 +19,31 @@ const noteCard = (id, image, date, title, description) => {
   // create the modal full view card
   cardDiv.addEventListener("click", (event) => {
     const modalDialog = document.createElement("dialog")
-    cardDiv.append(modalDialog)
-    modalDialog.innerHTML = "HELLO WORLD"
+    document.body.append(modalDialog)
     modalDialog.showModal()
-    const descriptionText = document.createElement("span")
-    modalDialog.append(descriptionText)
+    // Modal inside content
+    const thumbnailModal = document.createElement("img")
+    modalDialog.append(thumbnailModal)
+    thumbnailModal.src = image // change later
+    const dateTextModal = document.createElement("span")
+    modalDialog.append(dateTextModal)
+    dateTextModal.innerHTML = date
+    const titleTextModal = document.createElement("span")
+    modalDialog.append(titleTextModal)
+    titleTextModal.innerHTML = title
+    const descriptionTextModal = document.createElement("span")
+    modalDialog.append(descriptionTextModal)
+    descriptionTextModal.innerHTML = description
+    // Modal close button
+    const closeModalDialogBtn = document.createElement("button")
+    closeModalDialogBtn.className = "closeModalDialogBtn"
+    closeModalDialogBtn.innerHTML = "❌"
+    modalDialog.append(closeModalDialogBtn)
+    closeModalDialogBtn.addEventListener("click", () => {
+      modalDialog.close()
+      modalDialog.remove()
+      modalDialog = null
+    })
   })
 }
 
@@ -38,8 +58,8 @@ noteCard(
   "4",
   "https://w0.peakpx.com/wallpaper/730/501/HD-wallpaper-iphone-14-pro-thumbnail.jpg",
   "14/10/2075",
-  "testtitle",
-  "testdesc"
+  "testtitle testtitletesttitle testtitle testtitle",
+  "test description test description test description test description test description test description test description test description"
 )
 noteCard(
   "3",
@@ -52,34 +72,6 @@ noteCard(
   "2",
   "https://icons.iconarchive.com/icons/ampeross/qetto-2/256/photos-icon.png",
   "12/10/2075",
-  "testtitle",
-  "testdesc"
-)
-noteCard(
-  "1",
-  "https://icons.iconarchive.com/icons/ampeross/qetto-2/256/photos-icon.png",
-  "11/10/2075",
-  "testtitle",
-  "testdesc"
-)
-noteCard(
-  "1",
-  "https://icons.iconarchive.com/icons/ampeross/qetto-2/256/photos-icon.png",
-  "11/10/2075",
-  "testtitle",
-  "testdesc"
-)
-noteCard(
-  "1",
-  "https://icons.iconarchive.com/icons/ampeross/qetto-2/256/photos-icon.png",
-  "11/10/2075",
-  "testtitle",
-  "testdesc"
-)
-noteCard(
-  "1",
-  "https://icons.iconarchive.com/icons/ampeross/qetto-2/256/photos-icon.png",
-  "11/10/2075",
   "testtitle",
   "testdesc"
 )

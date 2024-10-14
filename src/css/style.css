@@ -91,7 +91,6 @@ header {
   width: 70vw;
   border: 2px solid black;
   background-color: #3d3d3d;
-
   border-radius: 25px;
   display: flex;
   justify-content: center;
@@ -120,4 +119,46 @@ header {
   height: 100%;
   object-fit: contain;
   overflow: hidden;
+}
+
+/* Note card Modal */
+body dialog {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 75vw;
+  height: 80vh;
+  padding: 1rem;
+  border-radius: 25px;
+  border: 2px solid #1a252b;
+  background: rgba(44, 43, 43, 0.2);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  box-shadow: inset 0 0 35px #000000;
+  transition: box-shadow 0.25s ease;
+  outline: none;
+}
+body dialog img {
+  width: 20vw;
+  height: 50vh;
+  object-fit: contain;
+  overflow: hidden;
+}
+
+body dialog span {
+  color: white;
+  padding: 0.5rem 0rem;
+}
+.closeModalDialogBtn {
+  padding: 1rem 2rem;
+  font-size: 2rem;
+  border: none;
+  background: transparent;
+  position: absolute; /* Make the button position absolute */
+  top: 10px; /* Set distance from the top */
+  right: 10px; /* Set distance from the right */
+  cursor: pointer; /* Optional: add a pointer cursor */
+  color: white; /* Ensure the color stands out */
 }
