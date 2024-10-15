@@ -42,7 +42,6 @@ export const noteCard = (id, image, date, title, description) => {
     closeModalDialogBtn.addEventListener("click", () => {
       modalDialog.close()
       modalDialog.remove()
-      modalDialog = null
     })
   })
 }
