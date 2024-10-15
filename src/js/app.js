@@ -1,4 +1,5 @@
 import { noteCard } from "./noteCard.js"
+import { createNote } from "./createNote.js"
 
 noteCard(
   "5",
@@ -35,3 +36,9 @@ noteCard(
   "testtitle",
   "testdesc"
 )
+
+createNote((imageFile, titleText, descriptionText) => {
+  console.log("Image File:", imageFile)
+  console.log("Title:", titleText)
+  console.log("Description:", descriptionText)
+})
