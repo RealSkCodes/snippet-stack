@@ -191,6 +191,22 @@ body dialog span {
 #image-upload:hover {
   background-color: #233456;
 }
+#options-append-modal-dialog {
+  padding: 0.6rem 0.9rem;
+  background-color: #1e2a47;
+  border-radius: 10px;
+  color: white;
+  border: 1px solid black;
+  font-size: 1.3rem;
+  outline: none;
+}
+#options-append-modal-dialog option {
+  background-color: #1b1b2f;
+  color: white;
+}
+#options-append-modal-dialog option:disabled {
+  display: none;
+}
 #title-textbox-input {
   resize: none;
   width: 25vw;
