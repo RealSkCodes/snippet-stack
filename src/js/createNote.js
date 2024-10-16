@@ -1,9 +1,11 @@
+import { dropdown } from "./dropdown.js"
 const createNoteButton = document.getElementById("create-note-button")
 
 export const createNote = (callback) => {
   createNoteButton.addEventListener("click", (event) => {
     const modalDialog = document.createElement("dialog")
     document.body.append(modalDialog)
+    modalDialog.id = "modal-dialog"
     modalDialog.showModal()
 
     // Image upload input
@@ -12,6 +14,9 @@ export const createNote = (callback) => {
     imageUpload.type = "file"
     imageUpload.id = "image-upload"
     imageUpload.accept = "image/*"
+
+    // Category function use
+    const categoryDropdown = dropdown(modalDialog, ["react", "javascript", "python"])
 
     // Title input
     const titleTextboxInput = document.createElement("textarea")
@@ -33,11 +38,11 @@ export const createNote = (callback) => {
 
     noteSubmitButton.addEventListener("click", () => {
       const imageFile = document.getElementById("image-upload").files[0]
+      const categoryValue = categoryDropdown.value
       const titleText = document.getElementById("title-textbox-input").value
       const descriptionText = document.getElementById("description-textbox-input").value
-
       // Call the callback with the values
-      callback(imageFile, titleText, descriptionText)
+      callback(imageFile, categoryValue, titleText, descriptionText)
       modalDialog.close() // Close the modal after submission
       modalDialog.remove()
     })
