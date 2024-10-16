@@ -13,13 +13,6 @@ export const createNote = (callback) => {
     imageUpload.id = "image-upload"
     imageUpload.accept = "image/*"
 
-    // Category selection
-    const createCategory = document.createElement("select")
-    modalDialog.append(createCategory)
-    createCategory.id = "create-category-select"
-    const categoryOption = document.createElement("option")
-    createCategory.append(categoryOption)
-
     // Title input
     const titleTextboxInput = document.createElement("textarea")
     modalDialog.append(titleTextboxInput)
