@@ -37,8 +37,9 @@ noteCard(
   "testdesc"
 )
 
-createNote((imageFile, titleText, descriptionText) => {
+createNote((imageFile, categoryValue, titleText, descriptionText) => {
   console.log("Image File:", imageFile)
+  console.log("Category Name:", categoryValue)
   console.log("Title:", titleText)
   console.log("Description:", descriptionText)
 })
