@@ -41,5 +41,14 @@ export const createNote = (callback) => {
       modalDialog.close() // Close the modal after submission
       modalDialog.remove()
     })
+    // Submit button
+    const noteCancelButton = document.createElement("button")
+    modalDialog.append(noteCancelButton)
+    noteCancelButton.id = "note-cancel-button"
+    noteCancelButton.innerHTML = "❌"
+    noteCancelButton.addEventListener("click", () => {
+      modalDialog.close() // Close the modal after submission
+      modalDialog.remove()
+    })
   })
 }

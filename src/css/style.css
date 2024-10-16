@@ -229,3 +229,14 @@ body dialog span {
   cursor: pointer;
   color: white;
 }
+#note-cancel-button {
+  padding: 1rem 2rem;
+  font-size: 2rem;
+  border: none;
+  background: transparent;
+  position: absolute; /* Make the button position absolute */
+  top: 10px; /* Set distance from the top */
+  right: 10px; /* Set distance from the right */
+  cursor: pointer; /* Optional: add a pointer cursor */
+  color: #ffffff; /* Ensure the color stands out */
+}
