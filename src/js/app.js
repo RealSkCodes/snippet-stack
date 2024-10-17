@@ -37,9 +37,13 @@ noteCard(
   "testdesc"
 )
 
+let options = []
+for (let i = 0; i < localStorage.length; i++) {
+  options.push(localStorage.getItem(localStorage.key(i)))
+}
 createNote((imageFile, categoryValue, titleText, descriptionText) => {
   console.log("Image File:", imageFile)
   console.log("Category Name:", categoryValue)
   console.log("Title:", titleText)
   console.log("Description:", descriptionText)
-})
+}, options)
