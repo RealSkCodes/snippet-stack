@@ -8,15 +8,26 @@ export const createNote = (callback) => {
     modalDialog.id = "modal-dialog"
     modalDialog.showModal()
 
+    // Create div to contain image upload, new category button and category function dropdown
+    const noteImgCateDropContainer = document.createElement("div")
+    modalDialog.append(noteImgCateDropContainer)
+    noteImgCateDropContainer.id = "note-img-cate-drop-container"
+
     // Image upload input
     const imageUpload = document.createElement("input")
-    modalDialog.append(imageUpload)
+    noteImgCateDropContainer.append(imageUpload)
     imageUpload.type = "file"
     imageUpload.id = "image-upload"
     imageUpload.accept = "image/*"
 
-    // Category function use
-    const categoryDropdown = dropdown(modalDialog, ["react", "javascript", "python"])
+    // Category function dropdown
+    const categoryDropdown = dropdown(noteImgCateDropContainer, ["react", "javascript", "python"])
+
+    // Create new category button
+    const createCategoryButton = document.createElement("button")
+    noteImgCateDropContainer.append(createCategoryButton)
+    createCategoryButton.id = "create-category-button"
+    createCategoryButton.innerHTML = "Create ✙"
 
     // Title input
     const titleTextboxInput = document.createElement("textarea")
