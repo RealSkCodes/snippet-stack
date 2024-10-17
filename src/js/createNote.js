@@ -1,7 +1,7 @@
 import { dropdown } from "./dropdown.js"
 const createNoteButton = document.getElementById("create-note-button")
 
-export const createNote = (callback) => {
+export const createNote = (callback, options) => {
   createNoteButton.addEventListener("click", (event) => {
     const modalDialog = document.createElement("dialog")
     document.body.append(modalDialog)
@@ -21,13 +21,42 @@ export const createNote = (callback) => {
     imageUpload.accept = "image/*"
 
     // Category function dropdown
-    const categoryDropdown = dropdown(noteImgCateDropContainer, ["react", "javascript", "python"])
+    let categoryDropdown = dropdown(noteImgCateDropContainer, options)
 
-    // Create new category button
+    // Create new category add button
     const createCategoryButton = document.createElement("button")
     noteImgCateDropContainer.append(createCategoryButton)
     createCategoryButton.id = "create-category-button"
     createCategoryButton.innerHTML = "Create ✙"
+    createCategoryButton.addEventListener("click", () => {
+      const createTextboxForCategoryName = document.createElement("textarea")
+      const textboxSubmitButton = document.createElement("button")
+      textboxSubmitButton.addEventListener("click", () => {
+        const categoryTextboxValue = createTextboxForCategoryName.value.trim()
+        if (categoryTextboxValue) {
+          options.push(categoryTextboxValue)
+          const newDropdown = dropdown(noteImgCateDropContainer, options)
+          categoryDropdown.replaceWith(newDropdown)
+          categoryDropdown = newDropdown
+        }
+      })
+      createCategoryButton.replaceWith(createTextboxForCategoryName)
+      noteImgCateDropContainer.append(textboxSubmitButton)
+      createTextboxForCategoryName.id = "create-textbox-for-category-name"
+      textboxSubmitButton.id = "textbox-submit-button"
+      textboxSubmitButton.innerHTML = "Submit"
+      createTextboxForCategoryName.placeholder = "Enter the new category name here..."
+      createTextboxForCategoryName.addEventListener("submit", () => {
+        createTextboxForCategoryName.replaceWith(createCategoryButton)
+      })
+      textboxSubmitButton.addEventListener("click", () => {
+        const categoryTextboxValue = document.getElementById("create-textbox-for-category-name")
+        localStorage.setItem(localStorage.length + 1, categoryTextboxValue.value)
+        console.log(categoryTextboxValue.value)
+        createTextboxForCategoryName.replaceWith(createCategoryButton)
+        textboxSubmitButton.replaceWith(createCategoryButton)
+      })
+    })
 
     // Title input
     const titleTextboxInput = document.createElement("textarea")

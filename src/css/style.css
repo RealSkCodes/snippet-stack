@@ -226,6 +226,31 @@ body dialog span {
   cursor: pointer;
   color: white;
 }
+#create-textbox-for-category-name {
+  resize: none;
+  width: 25vw;
+  height: 3.3vh;
+  outline: none;
+  padding: 5px 10px;
+  margin: 0.5rem 0;
+  font-size: 1.5rem;
+  background-color: #001f33;
+  color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+#textbox-submit-button {
+  min-width: 8vw;
+  min-height: 5.5vh;
+  margin: 0.8rem;
+  padding: 5px;
+  font-size: 1.4rem;
+  border: 1px solid #005f8d; /* Consistent border color */
+  border-radius: 8px;
+  background-color: #007bbd; /* Bright blue for button */
+  cursor: pointer;
+  color: white;
+}
 #title-textbox-input {
   resize: none;
   width: 25vw;
