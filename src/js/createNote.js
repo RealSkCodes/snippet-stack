@@ -23,7 +23,7 @@ export const createNote = (callback, options) => {
     // Category function dropdown
     let categoryDropdown = dropdown(noteImgCateDropContainer, options)
 
-    // Create new category add button
+    // Create new category add button and dynamic catergory name update feature
     const createCategoryButton = document.createElement("button")
     noteImgCateDropContainer.append(createCategoryButton)
     createCategoryButton.id = "create-category-button"
