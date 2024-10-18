@@ -1,21 +1,21 @@
-import { noteCard } from "./noteCard.js"
 import { createNote } from "./createNote.js"
+import { noteCard } from "./noteCard.js"
 
-noteCard(
-  "1",
-  "https://icons.iconarchive.com/icons/ampeross/qetto-2/256/photos-icon.png",
-  "15/10/2075",
-  "Refactoring",
-  "Updating the source code without changing the behaviour of the application"
-)
-
-let options = []
-for (let i = 0; i < localStorage.length; i++) {
-  options.push(localStorage.getItem(localStorage.key(i)))
+const viewImage = async () => {
+  let options = []
+  for (let i = 0; i < localStorage.length; i++) {
+    options.push(localStorage.getItem(localStorage.key(i)))
+  }
+  // Wait for the data from createNote
+  const allData = await createNote(options)
+  // Use the data in noteCard
+  noteCard(
+    "1", // Assuming a static ID
+    allData.imageFile, // Use the uploaded image URL
+    "15/10/2075", // Static date for testing
+    allData.titleText, // Use the title from the input
+    allData.descriptionText // Use the description from the input
+  )
 }
-createNote((imageFile, categoryValue, titleText, descriptionText) => {
-  console.log("Image File:", imageFile)
-  console.log("Category Name:", categoryValue)
-  console.log("Title:", titleText)
-  console.log("Description:", descriptionText)
-}, options)
+
+viewImage()
