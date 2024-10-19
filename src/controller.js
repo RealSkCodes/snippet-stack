@@ -12,7 +12,7 @@ const addNotes = (req, res) => {
   const { image_url, category, title, description } = req.body
   pool.query(queries.addNotesQuery, [image_url, category, title, description], (error, results) => {
     if (error) throw error
-    res.status(201).send("Note Added Successfully!")
+    res.status(201).json({ message: "Note Added Successfully!" })
     console.log("Note Added Successfully!")
   })
 }
