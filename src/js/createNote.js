@@ -90,8 +90,36 @@ export const createNote = (options) => {
         const descriptionText = document.getElementById("description-textbox-input").value
         const uploadedImageUrl = await getUploadImageLink(imageUpload)
 
+        // Ensure the object keys match the backend
+        const noteData = {
+          image_url: uploadedImageUrl,
+          category: categoryValue,
+          title: titleText,
+          description: descriptionText,
+        }
+
+        try {
+          const response = await fetch("http://localhost:3000/api/v1/notes", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(noteData),
+          })
+
+          if (!response.ok) {
+            throw new Error("Network response was not ok")
+          }
+
+          // Parse the JSON response from the server
+          const result = await response.json()
+          console.log("Note added:", result.message) // Should log "Note Added Successfully!"
+        } catch (error) {
+          console.error("Error adding note:", error)
+        }
+
         // Resolve the promise with the note data
-        resolve({ imageFile: uploadedImageUrl, categoryValue, titleText, descriptionText })
+        resolve(noteData)
 
         modalDialog.close()
         modalDialog.remove()
