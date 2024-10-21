@@ -17,9 +17,18 @@ const addNotes = (req, res) => {
   })
 }
 
+const getNotesByCategory = (req, res) => {
+  const { category } = req.params // Get the category from the request parameters
+  pool.query(queries.getNotesByCategoryQuery, [category], (error, results) => {
+    if (error) throw error
+    res.status(200).json(results.rows)
+  })
+}
+
 const controller = {
   getNotes,
   addNotes,
+  getNotesByCategory,
 }
 // might make it one line later
 export default controller
