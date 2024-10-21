@@ -1,9 +1,9 @@
 import { dropdown } from "./dropdown.js"
 import { getUploadImageLink } from "./getUploadImageLink.js"
-const createNoteButton = document.getElementById("create-note-button")
 
-export const createNote = (options) => {
+export const createNote = (options, loadNotes) => {
   return new Promise((resolve) => {
+    const createNoteButton = document.getElementById("create-note-button")
     createNoteButton.addEventListener("click", (event) => {
       const modalDialog = document.createElement("dialog")
       document.body.append(modalDialog)
@@ -90,7 +90,6 @@ export const createNote = (options) => {
         const descriptionText = document.getElementById("description-textbox-input").value
         const uploadedImageUrl = await getUploadImageLink(imageUpload)
 
-        // Ensure the object keys match the backend
         const noteData = {
           image_url: uploadedImageUrl,
           category: categoryValue,
@@ -111,16 +110,16 @@ export const createNote = (options) => {
             throw new Error("Network response was not ok")
           }
 
-          // Parse the JSON response from the server
           const result = await response.json()
           console.log("Note added:", result.message) // Should log "Note Added Successfully!"
+
+          // Reload notes after successful submission
+          await loadNotes()
         } catch (error) {
           console.error("Error adding note:", error)
         }
 
-        // Resolve the promise with the note data
         resolve(noteData)
-
         modalDialog.close()
         modalDialog.remove()
       })
