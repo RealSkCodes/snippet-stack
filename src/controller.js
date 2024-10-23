@@ -7,7 +7,6 @@ const getNotes = (req, res) => {
     res.status(200).json(results.rows)
   })
 }
-
 const addNotes = (req, res) => {
   const { image_url, category, title, description } = req.body
   pool.query(queries.addNotesQuery, [image_url, category, title, description], (error, results) => {
@@ -16,19 +15,26 @@ const addNotes = (req, res) => {
     console.log("Note Added Successfully!")
   })
 }
-
 const getNotesByCategory = (req, res) => {
-  const { category } = req.params // Get the category from the request parameters
+  const { category } = req.params
   pool.query(queries.getNotesByCategoryQuery, [category], (error, results) => {
     if (error) throw error
     res.status(200).json(results.rows)
   })
 }
-
+const getCategories = (req, res) => {
+  pool.query(queries.getCategoriesQuery, (error, results) => {
+    if (error) {
+      console.error("Error querying categories:", error)
+      return res.status(500).json({ error: "Internal server error" })
+    }
+    res.status(200).json(results.rows)
+  })
+}
 const controller = {
   getNotes,
   addNotes,
   getNotesByCategory,
+  getCategories,
 }
-// might make it one line later
 export default controller
