@@ -1,3 +1,6 @@
+import { deleteCardData } from "./deleteCard.js"
+import { loadNotes } from "./app.js"
+import { setupCategories } from "./app.js"
 const notesContainer = document.getElementById("notes-container")
 
 export const noteCard = (id, image, date, title, description) => {
@@ -21,6 +24,7 @@ export const noteCard = (id, image, date, title, description) => {
     const modalDialog = document.createElement("dialog")
     document.body.append(modalDialog)
     modalDialog.showModal()
+    modalDialog.id = `modal${id}`
     // Modal inside content
     const thumbnailModal = document.createElement("img")
     modalDialog.append(thumbnailModal)
@@ -34,7 +38,14 @@ export const noteCard = (id, image, date, title, description) => {
     const descriptionTextModal = document.createElement("span")
     modalDialog.append(descriptionTextModal)
     descriptionTextModal.innerHTML = description
+    const deleteCard = document.createElement("button")
+    modalDialog.append(deleteCard)
+    deleteCard.id = `${id}`
+    deleteCard.className = `delete-card`
+    deleteCard.innerHTML = "Delete"
     // Modal close button
+    deleteCardData(id, loadNotes, setupCategories)
+
     const closeModalDialogBtn = document.createElement("button")
     closeModalDialogBtn.className = "closeModalDialogBtn"
     closeModalDialogBtn.innerHTML = "❌"
