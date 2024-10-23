@@ -277,6 +277,18 @@ body dialog span {
   border: 1px solid black;
   border-radius: 10px;
 }
+.delete-card {
+  min-width: 8vw;
+  min-height: 5.5vh;
+  margin: 0.8rem;
+  padding: 5px;
+  font-size: 1.4rem;
+  border: 1px solid #005f8d; /* Consistent border color */
+  border-radius: 8px;
+  background-color: #007bbd; /* Bright blue for button */
+  cursor: pointer;
+  color: white;
+}
 #note-submit-button {
   min-width: 8vw;
   min-height: 5.5vh;
