@@ -9,7 +9,7 @@ const getCategoryFromUrl = () => {
   return category
 }
 
-const loadNotes = async () => {
+export const loadNotes = async () => {
   try {
     const category = getCategoryFromUrl()
     const fetchResult = await fetch(`http://localhost:3000/api/v1/notes/${category}`)
