@@ -17,7 +17,6 @@ const loadNotes = async () => {
       throw new Error(`HTTP error! status: ${fetchResult.status}`)
     }
     const result = await fetchResult.json()
-    // console.log("Fetched notes:", result) // Log the result
     const notesContainer = document.getElementById("notes-container")
     notesContainer.innerHTML = ""
     result.forEach((element) => {
@@ -45,17 +44,32 @@ const runAll = async () => {
     }
     const result = await fetchCategoriesResult.json()
     const categoriesArray = [] // Step 1: Initialize an empty array
+    const categoryOptionList = document.getElementById("header-bottom-container-navbar")
+
+    // Create and append "All" span
+    const allSpan = document.createElement("span")
+    allSpan.innerHTML = "All"
+    allSpan.addEventListener("click", () => {
+      window.location.href = "http://127.0.0.1:3000/" // Redirect to home
+    })
+    categoryOptionList.append(allSpan) // Append "All" span to the list
+
     result.forEach((element) => {
       categoriesArray.push(element.category) // Step 2: Push each category into the array
-      const categoryOptionList = document.getElementById("header-bottom-container-navbar")
       const createSpan = document.createElement("span")
-      categoryOptionList.append(createSpan)
       createSpan.innerHTML = element.category
+
+      // Step 3: Add an event listener to navigate to the category route
+      createSpan.addEventListener("click", () => {
+        window.location.href = `http://localhost:3000/${element.category}` // Redirect to the category page
+      })
+
+      categoryOptionList.append(createSpan) // Append category span
     })
-    await createNote(categoriesArray, loadNotes) // Step 3: Call createNote with the categories array
+    await createNote(categoriesArray, loadNotes) // Step 4: Call createNote with the categories array
   } catch (error) {
     console.error("Error in runAll:", error)
   }
 }
 
-runAll()
+runAll() // Call the main function when the script runs
