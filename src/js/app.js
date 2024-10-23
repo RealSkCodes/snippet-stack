@@ -47,6 +47,10 @@ const runAll = async () => {
     const categoriesArray = [] // Step 1: Initialize an empty array
     result.forEach((element) => {
       categoriesArray.push(element.category) // Step 2: Push each category into the array
+      const categoryOptionList = document.getElementById("header-bottom-container-navbar")
+      const createSpan = document.createElement("span")
+      categoryOptionList.append(createSpan)
+      createSpan.innerHTML = element.category
     })
     await createNote(categoriesArray, loadNotes) // Step 3: Call createNote with the categories array
   } catch (error) {
@@ -54,4 +58,4 @@ const runAll = async () => {
   }
 }
 
-runAll() // Call the main function when the script runs
+runAll()
