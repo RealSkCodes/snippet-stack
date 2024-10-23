@@ -1,5 +1,6 @@
 import { dropdown } from "./dropdown.js"
 import { getUploadImageLink } from "./getUploadImageLink.js"
+import { setupCategories } from "./app.js"
 
 export const createNote = (options, loadNotes) => {
   return new Promise((resolve) => {
@@ -90,6 +91,12 @@ export const createNote = (options, loadNotes) => {
         const descriptionText = document.getElementById("description-textbox-input").value
         const uploadedImageUrl = await getUploadImageLink(imageUpload)
 
+        // Check if the selected category is the default
+        if (categoryValue === "select") {
+          alert("Please select a category")
+          return // Exit the function if no category is selected
+        }
+
         const noteData = {
           image_url: uploadedImageUrl,
           category: categoryValue,
@@ -115,6 +122,7 @@ export const createNote = (options, loadNotes) => {
 
           // Reload notes after successful submission
           await loadNotes()
+          await setupCategories()
         } catch (error) {
           console.error("Error adding note:", error)
         }
