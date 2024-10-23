@@ -31,10 +31,28 @@ const getCategories = (req, res) => {
     res.status(200).json(results.rows)
   })
 }
+const deleteCardData = (req, res) => {
+  const { id } = req.params // Assuming the ID is passed as a URL parameter
+
+  pool.query(queries.deleteCardDataQuery, [id], (error, results) => {
+    if (error) {
+      console.error("Error deleting data:", error)
+      return res.status(500).json({ error: "Internal server error" })
+    }
+
+    if (results.rowCount === 0) {
+      return res.status(404).json({ error: "Note not found" })
+    }
+
+    res.status(200).json({ message: "Note deleted successfully" })
+  })
+}
+
 const controller = {
   getNotes,
   addNotes,
   getNotesByCategory,
   getCategories,
+  deleteCardData,
 }
 export default controller
