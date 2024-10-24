@@ -20,7 +20,13 @@ export const loadNotes = async () => {
     const notesContainer = document.getElementById("notes-container")
     notesContainer.innerHTML = ""
     result.forEach((element) => {
-      noteCard(element.id, element.image_url, element.category, element.title, element.description)
+      noteCard(
+        element.id,
+        element.image_url,
+        element.created_at,
+        element.title,
+        element.description
+      )
     })
   } catch (error) {
     console.error("Error loading notes:", error)
