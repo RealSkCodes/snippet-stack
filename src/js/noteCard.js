@@ -23,7 +23,7 @@ export const noteCard = (id, image, date, title, description) => {
 
   // Create card div to connect to notes container
   const cardDiv = document.createElement("div")
-  notesContainer.append(cardDiv)
+  notesContainer.prepend(cardDiv)
   cardDiv.id = `card-id${id}`
   cardDiv.className = "note-card"
 
@@ -47,19 +47,49 @@ export const noteCard = (id, image, date, title, description) => {
     modalDialog.showModal()
     modalDialog.id = `modal${id}`
 
+    // Create a container
+    const imgAndCloseBtnContainer = document.createElement("div")
+    modalDialog.append(imgAndCloseBtnContainer)
+    imgAndCloseBtnContainer.id = "img-and-close-button-container"
+
     // Modal inside content
     const thumbnailModal = document.createElement("img")
-    modalDialog.append(thumbnailModal)
+    imgAndCloseBtnContainer.append(thumbnailModal)
     thumbnailModal.src = image // change later
+
+    // Close button
+    const closeModalDialogBtn = document.createElement("button")
+    closeModalDialogBtn.className = "closeModalDialogBtn"
+    closeModalDialogBtn.innerHTML = "❌"
+    imgAndCloseBtnContainer.append(closeModalDialogBtn)
+    closeModalDialogBtn.addEventListener("click", () => {
+      modalDialog.close()
+      modalDialog.remove()
+    })
+
+    // Create a label for the description
+    const dateLabel = document.createElement("label")
+    modalDialog.append(dateLabel)
+    dateLabel.innerHTML = "Date:"
 
     const dateTextModal = document.createElement("span")
     modalDialog.append(dateTextModal)
     dateTextModal.innerHTML = formattedDate // Use the manually formatted date
+    // Create a label for the description
+    const titleLabel = document.createElement("label")
+    modalDialog.append(titleLabel)
+    titleLabel.innerHTML = "Title:"
 
     const titleTextModal = document.createElement("span")
     modalDialog.append(titleTextModal)
     titleTextModal.innerHTML = title
 
+    // Create a label for the description
+    const descriptionLabel = document.createElement("label")
+    modalDialog.append(descriptionLabel)
+    descriptionLabel.innerHTML = "Description:"
+
+    // Create the description text element
     const descriptionTextModal = document.createElement("span")
     modalDialog.append(descriptionTextModal)
     descriptionTextModal.innerHTML = description
@@ -72,14 +102,5 @@ export const noteCard = (id, image, date, title, description) => {
 
     // Modal close button
     deleteCardData(id, loadNotes, setupCategories)
-
-    const closeModalDialogBtn = document.createElement("button")
-    closeModalDialogBtn.className = "closeModalDialogBtn"
-    closeModalDialogBtn.innerHTML = "❌"
-    modalDialog.append(closeModalDialogBtn)
-    closeModalDialogBtn.addEventListener("click", () => {
-      modalDialog.close()
-      modalDialog.remove()
-    })
   })
 }
