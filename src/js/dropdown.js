@@ -4,7 +4,7 @@ export const dropdown = (elemToAppend, options) => {
   elemToAppend.append(createCategory)
   createCategory.id = `options-append-${elemToAppend.id}`
   options.forEach(() => {
-    createCategory.innerHTML = `<option value="select" disabled selected>Select</option>`
+    createCategory.innerHTML = `<option value="select" disabled selected>Select Category</option>`
   })
   options.forEach((element) => {
     createCategory.innerHTML += `<option value="${element}">${element}</option>`
