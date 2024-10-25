@@ -1,314 +1,283 @@
 @import url("https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap");
+/* Global Styles */
 * {
   margin: 0;
   padding: 0;
-  font-family: "Trebuchet MS", Arial, sans-serif;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
   font-size: 1rem;
+  color: #dcdcdc;
 }
+body {
+  background-color: #151515; /* Very dark background */
+  line-height: 1.6;
+  padding: 0 2rem;
+  color: #dcdcdc; /* Light text */
+}
+button {
+  margin: 0.5rem 0.5rem;
+  background-color: #f4c7a7;
+  color: #202020;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+button:hover {
+  background-color: #ff9f80;
+}
+label {
+  color: red;
+}
+
 ::-webkit-scrollbar {
   height: 10px;
 }
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px #1a1a1a; /* Dark track for scrollbar */
+  box-shadow: inset 0 0 5px #333333; /* Ash grey track for scrollbar */
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb {
-  background: #007bbd; /* Bright blue for the scrollbar thumb */
+  background: #a64040; /* Muted red scrollbar thumb */
   border-radius: 10px;
   border: 4px solid transparent;
   background-clip: content-box;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #005f8d; /* Darker blue on hover */
+  background: #732c2c; /* Darker muted red on hover */
 }
-body {
-  background-color: #0d1b2a; /* Very dark blue background */
-}
-header {
-  padding-bottom: 1.5rem;
-}
-button:hover {
-  background-color: #35405efb !important; /* Green */
-}
+
+/* Header Styles */
 #header-top-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid #2c2c2c;
+}
 #header-logo {
-  height: 35px;
-  width: 35px;
-  margin: 0.8rem;
+  height: 40px;
+  width: 40px;
+  margin: 0rem 0.5rem;
 }
 #header-text {
   font-family: "Black Ops One", sans-serif;
   font-size: 2rem;
-  color: #ffffff; /* White for header text */
-  margin: 0.8rem;
-  text-shadow: 3px 3px 10px #717970c5;
+  color: #f4f4f4; /* Off-white for header text */
+  margin: 0rem 0.5rem;
 }
 #search-input {
-  min-width: 20vw;
-  margin: 0.8rem;
-  padding: 5px;
-  border: 1px solid #005f8d; /* Darker blue for input border */
-  border-radius: 8px;
-  background-color: #001f33; /* Darker blue-gray for input background */
-  color: #ffffff; /* White text color for input */
-  outline: none;
-  margin-left: auto;
-  margin-right: 0;
+  background-color: #202020;
+  border: 1px solid #444;
+  padding: 0.6rem 1rem;
+  border-radius: 20px;
+  color: #dcdcdc;
+  transition: border 0.3s ease;
+  margin: 0rem 0.5rem;
+}
+#search-input:focus {
+  border-color: #f4c7a7; /* Peach color on focus */
 }
 #search-button {
-  min-width: 3vw;
-  margin: 0.8rem;
-  padding: 8px 15px;
-  border: 1px solid #005f8d; /* Consistent border color */
-  border-radius: 8px;
-  background-color: #007bbd; /* Bright blue for button */
+  background-color: #5a2020;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 20px;
+  color: #fff;
+  font-weight: bold;
   cursor: pointer;
-  color: white; /* Ensure text is visible on button */
+  transition: background-color 0.3s ease;
+  margin: 0rem 0.5rem;
+}
+#search-button:hover {
+  background-color: #f4c7a7; /* Peach hover effect */
+  color: #000;
 }
 #create-note-button {
-  min-width: 3vw;
-  margin: 0.8rem;
-  padding: 8px 15px;
-  border: 1px solid #005f8d; /* Consistent border color */
-  border-radius: 8px;
-  background-color: #007bbd; /* Bright blue for button */
+  background-color: #0da132;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 20px;
+  color: #fff;
+  font-weight: bold;
   cursor: pointer;
-  color: white;
+  transition: background-color 0.3s ease;
+  margin: 0rem 0.5rem;
 }
+#create-note-button:hover {
+  background-color: #f4c7a7; /* Peach hover effect */
+  color: #000;
+}
+
+/* Navigation Bar Styles */
 #header-bottom-container-navbar {
   display: flex;
   justify-content: flex-start;
   overflow: auto hidden;
   white-space: nowrap;
   width: 30vw;
-  margin: auto;
 }
 #header-bottom-container-navbar span {
-  display: inline-block;
-  color: white;
-  text-align: center;
-  padding: 14px;
-  text-decoration: none;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  background-color: #2c2c2c;
+  color: #dcdcdc;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 #header-bottom-container-navbar span:hover {
-  background-color: #005f8d; /* Darker blue on hover */
-  border-radius: 8px;
+  background-color: #5a2020;
 }
 
-/* Notes container and notes card */
+/* Notes Container */
 #notes-container {
-  margin: auto;
-  width: 70vw;
-  border: 2px solid #444;
-  background-color: #1b1b2f;
-  border-radius: 25px;
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Allow cards to wrap to the next line */
+  align-items: flex-start; /* Align items at the start */
+  width: 100%; /* Full width */
+  padding: 1.5rem; /* Padding around the container */
+  gap: 2rem; /* Space between cards */
 }
+
+/* Define the maximum width of each note card */
 .note-card {
+  background-color: #202020;
+  border: 1px solid #5a2020;
+  border-radius: 15px;
+  padding: 1.2rem;
+  flex: 1 1 14vw; /* Allow cards to grow and shrink */
+  max-width: 14vw; /* Maximum width for each card */
+  height: 35vh; /* Height for each card */
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  width: 14vw;
-  height: 40vh;
-  padding: 1rem;
-  margin: 1.2rem 0.5rem;
-  border-radius: 25px;
-  background-color: #1f4068;
-  color: #ffffff;
-  box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.5);
-  transition: box-shadow 0.25s ease;
+  justify-content: space-between;
+  color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .note-card:hover {
-  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5), 5px 5px 25px #e7b4ff;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 82, 82, 0.3);
 }
 .note-card img {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
-  overflow: hidden;
+  height: 70%;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
-/* Note card Modal */
+/* Modal Styles */
 body dialog {
+  background: #252525;
+  color: #f1f1f1;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  padding: 1rem 2rem;
+  width: 70vw;
   margin: auto;
+  overflow-y: auto; /* Enable scrolling inside the dialog */
+  max-height: 92vh; /* Limit height so content can scroll */
+}
+#img-and-close-button-container {
+  display: flex;
+  justify-content: space-between;
+}
+body dialog img {
+  width: 90%;
+  height: 25vw;
+  border-radius: 10px;
+  margin: 1.5rem 0rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  object-fit: contain;
+  background-color: #333333;
+  padding: 1.3rem;
+}
+body dialog span {
+  display: block;
+  font-size: 1.4rem;
+  color: #e0e0e0;
+  margin: 0rem 1rem 0.4rem 1rem;
+  font-weight: 500;
+}
+.closeModalDialogBtn {
+  width: 4vw;
+  height: 6vh;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  position: sticky;
+  top: 0; /* Stay at the top while scrolling */
+  z-index: 999; /* Ensure the image stays above other elements */
+}
+.closeModalDialogBtn:hover {
+  background: #e53935;
+}
+.delete-card {
+  background-color: red;
+  color: #202020;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Create Note  */
+input[type="file"] {
+  background-color: #2c2c2c;
+  color: #f4f4f4;
+  border: 1px solid #5a2020;
+  padding: 0.7rem;
+  border-radius: 10px;
+  margin: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+input[type="file"]:hover {
+  background-color: #3b3b3b;
+}
+textarea,
+select {
+  background-color: #2c2c2c;
+  color: #dcdcdc;
+  border: 1px solid #5a2020;
+  padding: 0.7rem;
+  border-radius: 10px;
+  margin: 0.5rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+textarea:focus,
+select:focus {
+  border-color: #f4c7a7;
+}
+#note-img-cate-drop-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  width: 75vw;
-  height: 80vh;
-  padding: 1rem;
-  border-radius: 25px;
-  border: 2px solid #1a252b;
-  background: rgba(15, 52, 96, 0.8);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
-  box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.5);
-  transition: box-shadow 0.25s ease;
-  outline: none;
 }
-body dialog img {
-  width: 20vw;
-  height: 50vh;
-  object-fit: contain;
-  overflow: hidden;
-}
-
-body dialog span {
-  color: #ffffff;
-  padding: 0.5rem 0rem;
-}
-.closeModalDialogBtn {
-  padding: 1rem 2rem;
-  font-size: 2rem;
-  border: none;
-  background: transparent;
-  position: absolute; /* Make the button position absolute */
-  top: 10px; /* Set distance from the top */
-  right: 10px; /* Set distance from the right */
-  cursor: pointer; /* Optional: add a pointer cursor */
-  color: #ffffff; /* Ensure the color stands out */
-}
-
-/* Create Note Modal */
-#note-img-cate-drop-container {
+#modal-dialog {
+  width: min-content;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#modal-dialog button {
+  padding: 0rem 1rem;
+  border-radius: 20px;
+  width: 8vw;
+  height: 5vh;
+}
+#cancel-and-submit-btn-container {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-}
-#image-upload {
-  width: 11vw;
-  background-color: #1e2a47;
-  border: 1px solid black;
-  border-radius: 10px;
-  padding: 1rem;
-  color: white;
-  margin: 0.5rem 0;
-  font-size: 1rem;
-  transition: background-color 0.2s ease;
-}
-#image-upload:hover {
-  background-color: #233456;
-}
-#options-append-note-img-cate-drop-container {
-  width: 10vw;
-  padding: 0.6rem 0.9rem;
-  margin: 0rem 1rem;
-  background-color: #1e2a47;
-  border-radius: 10px;
-  color: white;
-  border: 1px solid black;
-  font-size: 1.3rem;
-  outline: none;
-}
-#options-append-note-img-cate-drop-container option {
-  background-color: #1b1b2f;
-  color: white;
-}
-#options-append-note-img-cate-drop-container option:disabled {
-  display: none;
-}
-#create-category-button {
-  min-width: 8vw;
-  min-height: 5.5vh;
-  margin: 0.8rem;
-  padding: 5px;
-  font-size: 1.4rem;
-  border: 1px solid #005f8d; /* Consistent border color */
-  border-radius: 8px;
-  background-color: #007bbd; /* Bright blue for button */
-  cursor: pointer;
-  color: white;
-}
-#create-textbox-for-category-name {
-  resize: none;
-  width: 25vw;
-  height: 3.3vh;
-  outline: none;
-  padding: 5px 10px;
-  margin: 0.5rem 0;
-  font-size: 1.5rem;
-  background-color: #001f33;
-  color: white;
-  border: 1px solid black;
-  border-radius: 10px;
-}
-#textbox-submit-button {
-  min-width: 8vw;
-  min-height: 5.5vh;
-  margin: 0.8rem;
-  padding: 5px;
-  font-size: 1.4rem;
-  border: 1px solid #005f8d; /* Consistent border color */
-  border-radius: 8px;
-  background-color: #007bbd; /* Bright blue for button */
-  cursor: pointer;
-  color: white;
-}
-#title-textbox-input {
-  resize: none;
-  width: 25vw;
-  height: 3.3vh;
-  outline: none;
-  padding: 5px 10px;
-  margin: 0.5rem 0;
-  font-size: 1.5rem;
-  background-color: #001f33;
-  color: white;
-  border: 1px solid black;
-  border-radius: 10px;
-}
-#description-textbox-input {
-  resize: none;
-  width: 25vw;
-  height: 30vh;
-  outline: none;
-  padding: 5px 10px;
-  margin: 0.5rem 0;
-  font-size: 1.2rem;
-  background-color: #001f33;
-  color: white;
-  border: 1px solid black;
-  border-radius: 10px;
-}
-.delete-card {
-  min-width: 8vw;
-  min-height: 5.5vh;
-  margin: 0.8rem;
-  padding: 5px;
-  font-size: 1.4rem;
-  border: 1px solid #005f8d; /* Consistent border color */
-  border-radius: 8px;
-  background-color: #007bbd; /* Bright blue for button */
-  cursor: pointer;
-  color: white;
-}
-#note-submit-button {
-  min-width: 8vw;
-  min-height: 5.5vh;
-  margin: 0.8rem;
-  padding: 5px;
-  font-size: 1.4rem;
-  border: 1px solid #005f8d; /* Consistent border color */
-  border-radius: 8px;
-  background-color: #007bbd; /* Bright blue for button */
-  cursor: pointer;
-  color: white;
-}
-#note-cancel-button {
-  padding: 1rem 2rem;
-  font-size: 2rem;
-  border: none;
-  background: transparent;
-  position: absolute; /* Make the button position absolute */
-  top: 10px; /* Set distance from the top */
-  right: 10px; /* Set distance from the right */
-  cursor: pointer; /* Optional: add a pointer cursor */
-  color: #ffffff; /* Ensure the color stands out */
 }
