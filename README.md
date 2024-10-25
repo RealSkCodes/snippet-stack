@@ -44,10 +44,29 @@
      ```bash
      cp .env.example .env
      ```
-   - Replace the placeholder values in `.env` with your database.
+   - Replace the placeholder values in .env with your PostgreSQL database configuration details (see Database Setup below).
 
-4. **Run the application**:
+4. **Database Setup**:
+
+   Ensure you have PostgreSQL installed and configured on your system.
+
+   - Create a new PostgreSQL database (e.g., `notes_db`).
+   - Update `.env` with your PostgreSQL credentials:
+
+     ```plaintext
+     DB_USER=your_database_user
+     DB_HOST=localhost
+     DB_NAME=notes_db
+     DB_PASSWORD=your_database_password
+     DB_PORT=5432
+     ```
+
+5. **Run the application**:
    ```bash
    npm start
    ```
-   The app will be available at `http://localhost:3000`.
+   The app will be available at `http://localhost:<your_port>` (e.g., `http://localhost:3000` if `PORT=3000` in your .env file).
+
+## Future Enhancements
+
+**Search Notes Feature**: We plan to implement a search functionality to allow users to quickly find specific notes based on keywords or tags. Stay tuned for this upcoming feature!
