@@ -44,9 +44,24 @@
      ```bash
      cp .env.example .env
      ```
-   - Replace the placeholder values in `.env` with your database.
+   - Replace the placeholder values in .env with your PostgreSQL database configuration details (see Database Setup below).
 
-4. **Run the application**:
+4. **Database Setup**:
+
+   Ensure you have PostgreSQL installed and configured on your system.
+
+   - Create a new PostgreSQL database (e.g., `notes_db`).
+   - Update `.env` with your PostgreSQL credentials:
+
+     ```plaintext
+     DB_USER=your_database_user
+     DB_HOST=localhost
+     DB_NAME=notes_db
+     DB_PASSWORD=your_database_password
+     DB_PORT=5432
+     ```
+
+5. **Run the application**:
    ```bash
    npm start
    ```
