@@ -1,4 +1,4 @@
-CREATE TABLE notes (
+CREATE TABLE IF NOT EXISTS notes (
   id SERIAL PRIMARY KEY,
   image_url TEXT,
   category VARCHAR(50) NOT NULL,
