@@ -79,9 +79,24 @@ export const createNote = (options, loadNotes) => {
       descriptionTextboxInput.id = "description-textbox-input"
       descriptionTextboxInput.placeholder = "Enter the details here..."
 
+      // Create div to contain image upload, new category button and category function dropdown
+      const cancelAndSubmitBtnContainer = document.createElement("div")
+      modalDialog.append(cancelAndSubmitBtnContainer)
+      cancelAndSubmitBtnContainer.id = "cancel-and-submit-btn-container"
+
+      // Cancel button
+      const noteCancelButton = document.createElement("button")
+      cancelAndSubmitBtnContainer.append(noteCancelButton)
+      noteCancelButton.id = "note-cancel-button"
+      noteCancelButton.innerHTML = "❌"
+      noteCancelButton.addEventListener("click", () => {
+        modalDialog.close()
+        modalDialog.remove()
+      })
+
       // Submit button
       const noteSubmitButton = document.createElement("button")
-      modalDialog.append(noteSubmitButton)
+      cancelAndSubmitBtnContainer.append(noteSubmitButton)
       noteSubmitButton.id = "note-submit-button"
       noteSubmitButton.innerHTML = "Submit"
 
@@ -128,16 +143,6 @@ export const createNote = (options, loadNotes) => {
         }
 
         resolve(noteData)
-        modalDialog.close()
-        modalDialog.remove()
-      })
-
-      // Cancel button
-      const noteCancelButton = document.createElement("button")
-      modalDialog.append(noteCancelButton)
-      noteCancelButton.id = "note-cancel-button"
-      noteCancelButton.innerHTML = "❌"
-      noteCancelButton.addEventListener("click", () => {
         modalDialog.close()
         modalDialog.remove()
       })
