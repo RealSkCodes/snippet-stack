@@ -65,4 +65,4 @@
    ```bash
    npm start
    ```
-   The app will be available at `http://localhost:3000`.
+   The app will be available at `http://localhost:<your_port>` (e.g., `http://localhost:3000` if `PORT=3000` in your .env file).
